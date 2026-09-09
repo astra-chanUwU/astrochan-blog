@@ -1,0 +1,19 @@
+{{ define "main" }}
+  <section class="page-content listing-page">
+    <h1 class="page-title">{{ .Title }}</h1>
+    <div class="section-intro prose">{{ .Content }}</div>
+    <div class="entry-list">
+      {{ range .Pages }}
+        <article class="entry">
+          <h2 class="entry-title">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            {{ if .Params.demo }}<span class="demo-marker">demo</span>{{ end }}
+          </h2>
+          {{ if not .Date.IsZero }}
+            <time class="entry-date" datetime="{{ .Date.Format `2006-01-02` }}">{{ .Date.Format "January 2, 2006" }}</time>
+          {{ end }}
+        </article>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

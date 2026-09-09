@@ -1,0 +1,6 @@
+{{- $type := default "note" (.Get "type") -}}
+{{- $label := default (title $type) (.Get "label") -}}
+<aside class="notice notice-{{ $type }}">
+  <strong class="notice-label">{{ $label }}:</strong>
+  <div class="notice-body">{{ .Inner | markdownify }}</div>
+</aside>

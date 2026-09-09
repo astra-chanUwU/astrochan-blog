@@ -1,0 +1,26 @@
+baseURL = 'https://example.org/'
+locale = 'en-US'
+title = 'Astrochan'
+enableRobotsTXT = true
+
+[params]
+  description = 'Notes on software, systems, and the things I am learning.'
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+
+[[menus.main]]
+  name = 'About'
+  pageRef = '/about'
+  weight = 10
+
+[[menus.main]]
+  name = 'Writing'
+  pageRef = '/writing'
+  weight = 20
+
+[[menus.main]]
+  name = 'Misc'
+  pageRef = '/misc'
+  weight = 30

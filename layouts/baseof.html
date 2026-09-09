@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="{{ site.Language.Locale | default `en` }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ if .Title }}{{ .Title }} · {{ end }}{{ site.Title }}</title>
+    <meta name="description" content="{{ .Description | default site.Params.description }}">
+    <meta name="theme-color" content="#1b1d36">
+    {{ with resources.Get "css/main.css" | minify | fingerprint }}
+      <link rel="stylesheet" href="{{ .RelPermalink }}">
+    {{ end }}
+  </head>
+  <body>
+    <div class="site-frame">
+      <aside class="site-sidebar">
+        <a class="site-mark" href="{{ "/" | relURL }}" aria-label="{{ site.Title }} home">
+          <img class="site-avatar" src="{{ "images/profile-head.png" | relURL }}" alt="">
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+          {{ range site.Menus.main }}
+            {{ $current := or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}
+            <a href="{{ .URL }}"{{ if $current }} class="is-current" aria-current="page"{{ end }}>{{ .Name }}</a>
+          {{ end }}
+        </nav>
+      </aside>
+      <main class="site-main">
+        <header class="site-masthead">
+          <h1 class="site-title"><a href="{{ "/" | relURL }}">{{ site.Title }}</a></h1>
+        </header>
+        <div class="site-content">
+          {{ block "main" . }}{{ end }}
+        </div>
+        <footer class="site-footer">Made from plain files.</footer>
+      </main>
+    </div>
+  </body>
+</html>

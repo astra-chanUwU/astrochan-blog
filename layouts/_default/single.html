@@ -1,0 +1,29 @@
+{{ define "main" }}
+  <article class="page-content reading-column prose">
+    <h1 class="page-title">{{ .Title }}</h1>
+    {{ if or (not .Date.IsZero) .Params.demo }}
+      <div class="article-meta">
+        {{ if not .Date.IsZero }}
+          <time datetime="{{ .Date.Format `2006-01-02` }}">{{ .Date.Format "January 2, 2006" }}</time>
+        {{ end }}
+        {{ if .Params.demo }}<span class="demo-marker">demo</span>{{ end }}
+      </div>
+    {{ end }}
+    {{ with .Description }}<p class="article-description">{{ . }}</p>{{ end }}
+    {{ with .Params.series }}
+      <aside class="notice notice-series">
+        <strong class="notice-label">{{ .label }}:</strong>
+        <div class="notice-body">
+          <p>{{ .before }} <a href="{{ .url }}">{{ .link_label }}</a>. {{ .after }}</p>
+        </div>
+      </aside>
+    {{ end }}
+    {{ if .Params.toc }}
+      <details class="article-toc" open>
+        <summary>Table of Contents</summary>
+        {{ .TableOfContents }}
+      </details>
+    {{ end }}
+    {{ .Content }}
+  </article>
+{{ end }}
