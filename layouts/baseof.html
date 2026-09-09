@@ -33,5 +33,10 @@
         <footer class="site-footer">Made from plain files.</footer>
       </main>
     </div>
+    {{ if .Store.Get "hasCodeBlocks" }}
+      {{ with resources.Get "js/code-copy.js" | minify | fingerprint }}
+        <script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+      {{ end }}
+    {{ end }}
   </body>
 </html>

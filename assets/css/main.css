@@ -236,18 +236,18 @@ a:focus-visible {
   margin-bottom: 0;
 }
 
-.prose code {
-  color: var(--theme-main);
-  font: 0.875em/1.7 var(--font-code);
+.prose :not(pre) > code {
+  color: var(--theme-highlight);
+  font: 700 0.875em/1.7 var(--font-code);
 }
 
 .prose pre {
   overflow-x: auto;
-  margin: 1.714rem 0;
+  margin: 0;
   padding: 0.86rem 1.14rem;
   border: 1px solid var(--line);
   border-radius: 0.375rem;
-  background: var(--theme-surface);
+  background: #292b42;
   font-size: 14px;
   line-height: 1.714;
 }
@@ -255,6 +255,149 @@ a:focus-visible {
 .prose pre code {
   color: var(--theme-text);
   font: inherit;
+}
+
+.code-block {
+  position: relative;
+  margin: 1.714rem 0;
+}
+
+.code-block .highlight {
+  margin: 0;
+}
+
+.code-block pre {
+  min-height: 3.25rem;
+  padding-right: 3.65rem;
+}
+
+.code-copy {
+  position: absolute;
+  z-index: 1;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 0.3rem;
+  color: var(--theme-sub);
+  background: var(--theme-bg);
+  cursor: pointer;
+}
+
+.code-copy:hover {
+  border-color: var(--theme-main);
+  color: var(--theme-main);
+}
+
+.code-copy:focus-visible {
+  outline: 2px solid var(--theme-highlight);
+  outline-offset: 2px;
+}
+
+.code-copy.is-copied {
+  border-color: var(--theme-highlight);
+  color: var(--theme-highlight);
+}
+
+.code-copy-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.65;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.code-copy-icon-check {
+  display: none;
+}
+
+.code-copy.is-copied .code-copy-icon-clipboard {
+  display: none;
+}
+
+.code-copy.is-copied .code-copy-icon-check {
+  display: block;
+}
+
+/* Chroma tokens, tuned to Monkeytype's 80s After Dark palette. */
+.chroma .k,
+.chroma .kc,
+.chroma .kd,
+.chroma .kn,
+.chroma .kp,
+.chroma .kr,
+.chroma .nt,
+.chroma .ow {
+  color: var(--theme-main);
+}
+
+.chroma .kt,
+.chroma .nb,
+.chroma .bp,
+.chroma .nc,
+.chroma .nf,
+.chroma .fm {
+  color: var(--theme-sub);
+}
+
+.chroma .s,
+.chroma .sa,
+.chroma .sb,
+.chroma .sc,
+.chroma .dl,
+.chroma .sd,
+.chroma .s1,
+.chroma .s2,
+.chroma .se,
+.chroma .sh,
+.chroma .si,
+.chroma .sx,
+.chroma .sr,
+.chroma .ss {
+  color: var(--theme-highlight);
+}
+
+.chroma .m,
+.chroma .mb,
+.chroma .mf,
+.chroma .mh,
+.chroma .mi,
+.chroma .il,
+.chroma .mo,
+.chroma .nv,
+.chroma .vc,
+.chroma .vg,
+.chroma .vi,
+.chroma .vm {
+  color: #c9a7eb;
+}
+
+.chroma .c,
+.chroma .ch,
+.chroma .cm,
+.chroma .c1,
+.chroma .cs,
+.chroma .cp,
+.chroma .cpf {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.chroma .o,
+.chroma .p {
+  color: var(--text-soft);
+}
+
+.chroma .err,
+.chroma .gr,
+.chroma .gt {
+  color: #ff7b85;
 }
 
 .prose table {
