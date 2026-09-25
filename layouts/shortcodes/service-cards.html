@@ -1,0 +1,11 @@
+{{ with .Page.Params.services }}
+  <div class="service-grid">
+    {{ range . }}
+      <section class="service-card">
+        <h2>{{ .title }}</h2>
+        <p>{{ .description }}</p>
+        <p class="service-detail"><strong>Good for:</strong> {{ .good_for }}</p>
+      </section>
+    {{ end }}
+  </div>
+{{ end }}

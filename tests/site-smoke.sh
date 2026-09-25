@@ -53,6 +53,17 @@ assert_contains "$BUILD_DIR/writing/why-small-tools-last/index.html" 'class="dem
 assert_contains "$BUILD_DIR/writing/reading-a-log-file-slowly/index.html" '<pre' 'technical article renders a code block'
 assert_contains "$BUILD_DIR/writing/reading-a-log-file-slowly/index.html" '<table>' 'technical article renders a table'
 assert_contains "$BUILD_DIR/misc/a-note-on-digital-gardens/index.html" '<blockquote>' 'misc note renders a blockquote'
+SERVICES_PAGE="$BUILD_DIR/services/index.html"
+assert_contains "$SERVICES_PAGE" 'class="notice notice-note"' 'services page is visibly identified as a demo'
+assert_contains "$SERVICES_PAGE" 'Demo page' 'services page labels its placeholder content'
+assert_contains "$SERVICES_PAGE" 'Small websites that last' 'services page includes a sample website offering'
+assert_contains "$SERVICES_PAGE" 'Code and systems review' 'services page includes a sample review offering'
+assert_contains "$SERVICES_PAGE" 'Technical writing' 'services page includes a sample writing offering'
+assert_contains "$SERVICES_PAGE" 'mailto:hello@example.com?subject=Hello%20Astrochan' 'services page provides a clearly labeled demo contact link'
+assert_contains "$SERVICES_PAGE" 'href="/writing/why-small-tools-last/"' 'services page links to a technology essay'
+assert_contains "$SERVICES_PAGE" 'href="/writing/a-cache-is-a-promise/"' 'services page links to another technology essay'
+assert_before "$BUILD_DIR/index.html" 'href="/writing/"' 'href="/services/"' 'Services navigation follows Writing'
+assert_before "$BUILD_DIR/index.html" 'href="/services/"' 'href="/misc/"' 'Services navigation precedes Misc'
 COMPILER_DEMO="$BUILD_DIR/writing/from-syntax-tree-to-instruction-stream/index.html"
 assert_contains "$COMPILER_DEMO" 'class="article-toc"' 'long-form demo renders an article table of contents'
 assert_contains "$COMPILER_DEMO" 'href="#lowering-one-expression"' 'table of contents links to nested article headings'

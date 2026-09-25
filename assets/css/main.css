@@ -180,6 +180,40 @@ a:focus-visible {
   margin-bottom: 2.5rem;
 }
 
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.75rem 0 2.5rem;
+}
+
+.service-card {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.4rem;
+  background: var(--theme-surface);
+}
+
+.service-card h2 {
+  margin: 0 0 0.7rem;
+  color: var(--theme-text);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.service-card p {
+  margin: 0 0 0.75rem;
+}
+
+.service-card p:last-child {
+  margin-bottom: 0;
+}
+
+.service-detail {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
 .prose {
   color: var(--text-soft);
 }
@@ -557,6 +591,10 @@ a:focus-visible {
 }
 
 @media (max-width: 30rem) {
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
   .notice {
     display: block;
   }

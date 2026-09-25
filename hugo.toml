@@ -21,6 +21,11 @@ enableRobotsTXT = true
   weight = 20
 
 [[menus.main]]
+  name = 'Services'
+  pageRef = '/services'
+  weight = 25
+
+[[menus.main]]
   name = 'Misc'
   pageRef = '/misc'
   weight = 30
